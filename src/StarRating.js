@@ -40,7 +40,7 @@ export default function StarRating({
 
 	const textStyle = {
 		lineHeight: '1',
-		margin: '20',
+		margin: '0.1',
 		color,
 		fontSize: `${size / 1.5}px`,
 	}
