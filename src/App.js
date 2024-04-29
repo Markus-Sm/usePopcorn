@@ -50,17 +50,18 @@ const average = arr => arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 
 const KEY = 'c218c321'
 
 export default function App() {
+	const [query, setQuery] = useState('')
 	const [movies, setMovies] = useState(tempMovieData)
 	const [watched, setWatched] = useState(tempWatchedData)
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState('')
-	const query = 'interstellar'
+	const tempQuery = 'interstellar'
 
 	useEffect(function () {
 		async function fetchMovies() {
 			try {
 				setIsLoading(true)
-				const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
+				const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${tempQuery}`)
 
 				if (!res) throw new Error('Something went wrong with fetching movies')
 
@@ -83,7 +84,7 @@ export default function App() {
 	return (
 		<>
 			<NavBar>
-				<Search />
+				<Search query={query} setQuery={setQuery} />
 				<NumResults movies={movies} />
 			</NavBar>
 
@@ -135,8 +136,7 @@ function Logo() {
 	)
 }
 
-function Search() {
-	const [query, setQuery] = useState('')
+function Search({ query, setQuery }) {
 	return (
 		<input
 			className='search'
@@ -272,7 +272,7 @@ function WatchedMovie({ movie }) {
 					<span>{movie.userRating}</span>
 				</p>
 				<p>
-					<span>⏳-</span>
+					<span>⏳</span>
 					<span>{movie.runtime} min</span>
 				</p>
 			</div>
