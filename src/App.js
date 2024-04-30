@@ -55,17 +55,12 @@ export default function App() {
 	const [watched, setWatched] = useState(tempWatchedData)
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState('')
+	const [selectedId, setSelectedId] = useState(null)
 	const tempQuery = 'interstellar'
 
-	// useEffect(function () {
-	// 	console.log('A')
-	// }, [])
-
-	// useEffect(function () {
-	// 	console.log('B')
-	// })
-
-	// console.log('C')
+	function handleSelectMovie(id) {
+		setSelectedId(id)
+	}
 
 	useEffect(
 		function () {
@@ -113,13 +108,19 @@ export default function App() {
 				{/* <Box>{isLoading ? <Loader /> : <MovieList movies={movies} />}</Box> */}
 				<Box>
 					{isLoading && <Loader />}
-					{!isLoading && !error && <MovieList movies={movies} />}
+					{!isLoading && !error && <MovieList movies={movies} onSelectMovie={handleSelectMovie} />}
 					{error && <ErrorMessage message={error} />}
 				</Box>
 
 				<Box>
-					<WatchedSummary watched={watched} />
-					<WatchedMoviesList watched={watched} />
+					{selectedId ? (
+						<MovieDetails selectedId={selectedId} />
+					) : (
+						<>
+							<WatchedSummary watched={watched} />
+							<WatchedMoviesList watched={watched} />
+						</>
+					)}
 				</Box>
 			</Main>
 		</>
@@ -213,19 +214,19 @@ function WatchedBox() {
 	)
 }
 */
-function MovieList({ movies }) {
+function MovieList({ movies, onSelectMovie }) {
 	return (
-		<ul className='list'>
+		<ul className='list list-movies'>
 			{movies?.map(movie => (
-				<Movie movie={movie} key={movie.imdbID} />
+				<Movie movie={movie} key={movie.imdbID} onSelectMovie={onSelectMovie} />
 			))}
 		</ul>
 	)
 }
 
-function Movie({ movie }) {
+function Movie({ movie, onSelectMovie }) {
 	return (
-		<li>
+		<li onClick={() => onSelectMovie(movie.imdbID)}>
 			<img src={movie.Poster} alt={`${movie.Title} poster`} />
 			<h3>{movie.Title}</h3>
 			<div>
@@ -236,6 +237,10 @@ function Movie({ movie }) {
 			</div>
 		</li>
 	)
+}
+
+function MovieDetails({ selectedId }) {
+	return <div className='details'>{selectedId}</div>
 }
 
 function WatchedSummary({ watched }) {
