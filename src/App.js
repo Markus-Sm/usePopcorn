@@ -261,7 +261,7 @@ function WatchedSummary({ watched }) {
 					<span>{avgImdbRating}</span>
 				</p>
 				<p>
-					<span>🌟</span>
+					<span>🌟 y</span>
 					<span>{avgUserRating}</span>
 				</p>
 				<p>
