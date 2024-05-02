@@ -246,6 +246,19 @@ function Movie({ movie, onSelectMovie }) {
 function MovieDetails({ selectedId, onCloseMovie }) {
 	const [movie, setMovie] = useState({})
 
+	const {
+		Title: title,
+		Year: year,
+		Poster: poster,
+		Runtime: runtime,
+		imdbRating,
+		Plot: plot,
+		Released: released,
+		Actors: actors,
+		Director: director,
+		Genre: genre,
+	} = movie
+
 	useEffect(function () {
 		async function getMovieDetails() {
 			const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`)
@@ -291,7 +304,7 @@ function WatchedSummary({ watched }) {
 				</p>
 				<p>
 					<span>⏳</span>
-					<span>{avgRuntime} min</span>
+					<span>{avgRuntime} min X</span>
 				</p>
 			</div>
 		</div>
