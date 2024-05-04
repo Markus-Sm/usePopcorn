@@ -304,7 +304,7 @@ function WatchedSummary({ watched }) {
 				</p>
 				<p>
 					<span>⏳</span>
-					<span>{avgRuntime} min m</span>
+					<span>{avgRuntime} min aa </span>
 				</p>
 			</div>
 		</div>
