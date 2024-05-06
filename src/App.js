@@ -292,7 +292,7 @@ function WatchedSummary({ watched }) {
 			<div>
 				<p>
 					<span>#️⃣</span>
-					<span>{watched.length} movies</span>
+					<span>{watched.length} movies s</span>
 				</p>
 				<p>
 					<span>⭐️</span>
@@ -304,7 +304,7 @@ function WatchedSummary({ watched }) {
 				</p>
 				<p>
 					<span>⏳</span>
-					<span>{avgRuntime} min aa </span>
+					<span>{avgRuntime} min</span>
 				</p>
 			</div>
 		</div>
