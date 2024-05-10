@@ -57,7 +57,7 @@ export default function App() {
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState('')
 	const [selectedId, setSelectedId] = useState(null)
-	const tempQuery = 'avatar'
+	const tempQuery = 'Jesus'
 
 	function handleSelectMovie(id) {
 		setSelectedId(selectedId => (id === selectedId ? null : id))
