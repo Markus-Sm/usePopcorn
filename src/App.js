@@ -123,7 +123,12 @@ export default function App() {
 
 				<Box>
 					{selectedId ? (
-						<MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie} onAddWatched={handleAddWatched} />
+						<MovieDetails
+							selectedId={selectedId}
+							onCloseMovie={handleCloseMovie}
+							onAddWatched={handleAddWatched}
+							watched={watched}
+						/>
 					) : (
 						<>
 							<WatchedSummary watched={watched} />
@@ -248,7 +253,7 @@ function Movie({ movie, onSelectMovie }) {
 	)
 }
 
-function MovieDetails({ selectedId, onCloseMovie, onAddWatched }) {
+function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 	const [movie, setMovie] = useState({})
 	const [isLoading, setIsLoading] = useState(false)
 	const [userRating, setUserRating] = useState('')
@@ -265,6 +270,8 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched }) {
 		Director: director,
 		Genre: genre,
 	} = movie
+
+	const isWatched = watched.map(movie => movie)
 
 	function handleAdd() {
 		const newWatchedMovie = {
