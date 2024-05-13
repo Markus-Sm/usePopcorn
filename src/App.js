@@ -71,6 +71,10 @@ export default function App() {
 		setWatched(watched => [...watched, movie])
 	}
 
+	function handleDeleteWatched(id) {
+		setWatched(watched => watched.filter(movie => movie.imdbID !== id))
+	}
+
 	useEffect(
 		function () {
 			async function fetchMovies() {
@@ -271,7 +275,9 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 		Genre: genre,
 	} = movie
 
-	const isWatched1 = watched.map(movie => movie)
+	const isWatched = watched.map(movie => movie.imdbID).includes(selectedId)
+	const watchedUserRating = watched.find(movie => movie.imdbID === selectedId)?.userRating
+	console.log(watchedUserRating)
 
 	function handleAdd() {
 		const newWatchedMovie = {
@@ -330,11 +336,17 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
 					<section>
 						<div className='rating'>
-							<StarRating maxRating={10} size={24} onSetRating={setUserRating} />
-							{userRating > 0 && (
-								<button className='btn-add' onClick={handleAdd}>
-									+ Add to list
-								</button>
+							{!isWatched ? (
+								<>
+									<StarRating maxRating={10} size={24} onSetRating={setUserRating} />
+									{userRating > 0 && (
+										<button className='btn-add' onClick={handleAdd}>
+											+ Add to list
+										</button>
+									)}
+								</>
+							) : (
+								<p>You already rated this movie {watchedUserRating} ⭐️</p>
 							)}
 						</div>
 						<p>
