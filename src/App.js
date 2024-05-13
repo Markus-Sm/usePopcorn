@@ -271,7 +271,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 		Genre: genre,
 	} = movie
 
-	const isWatched = watched.map(movie => movie)
+	const isWatched1 = watched.map(movie => movie)
 
 	function handleAdd() {
 		const newWatchedMovie = {
