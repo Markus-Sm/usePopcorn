@@ -376,15 +376,15 @@ function WatchedSummary({ watched }) {
 				</p>
 				<p>
 					<span>⭐️</span>
-					<span>{avgImdbRating}</span>
+					<span>{+avgImdbRating.toFixed(2)}</span>
 				</p>
 				<p>
 					<span>🌟</span>
-					<span>{avgUserRating}</span>
+					<span>{+avgUserRating.toFixed(2)}</span>
 				</p>
 				<p>
 					<span>⏳</span>
-					<span>{avgRuntime} min</span>
+					<span>{+avgRuntime.toFixed()} min</span>
 				</p>
 			</div>
 		</div>
@@ -401,7 +401,7 @@ function WatchedMoviesList({ watched, onDeleteWatched }) {
 	)
 }
 
-function WatchedMovie({ movie }) {
+function WatchedMovie({ movie, onDeleteWatched }) {
 	return (
 		<li>
 			<img src={movie.poster} alt={`${movie.title} poster`} />
@@ -419,6 +419,10 @@ function WatchedMovie({ movie }) {
 					<span>⏳</span>
 					<span>{movie.runtime} min</span>
 				</p>
+
+				<button className='btn-delete' onClick={() => onDeleteWatched(movie.imdbID)}>
+					X
+				</button>
 			</div>
 		</li>
 	)
