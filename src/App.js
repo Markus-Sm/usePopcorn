@@ -117,6 +117,15 @@ export default function App() {
 		[query]
 	)
 
+	useEffect(function () {
+		document.addEventListener('keydown', function (e) {
+			if (e.code === 'Escape') {
+				handleCloseMovie()
+				console.log('Closing')
+			}
+		})
+	}, [])
+
 	return (
 		<>
 			<NavBar>
