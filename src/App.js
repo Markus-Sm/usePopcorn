@@ -118,10 +118,10 @@ export default function App() {
 	)
 
 	useEffect(function () {
-		document.addEventListener('keydown' function(e){
-			if(e.code === 'Escape'){
+		document.addEventListener('keydown', function (e) {
+			if (e.code === 'Escape') {
 				handleCloseMovie()
-				console.log("Closing")
+				console.log('Closing')
 			}
 		})
 	}, [])
