@@ -121,7 +121,7 @@ export default function App() {
 		document.addEventListener('keydown', function (e) {
 			if (e.code === 'Escape') {
 				handleCloseMovie()
-				console.log('Closing')
+				console.log('')
 			}
 		})
 	}, [])
