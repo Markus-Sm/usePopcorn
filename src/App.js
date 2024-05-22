@@ -117,15 +117,6 @@ export default function App() {
 		[query]
 	)
 
-	useEffect(function () {
-		document.addEventListener('keydown', function (e) {
-			if (e.code === 'Escape') {
-				handleCloseMovie()
-				console.log('')
-			}
-		})
-	}, [])
-
 	return (
 		<>
 			<NavBar>
@@ -309,6 +300,18 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 		onAddWatched(newWatchedMovie)
 		onCloseMovie()
 	}
+
+	useEffect(
+		function () {
+			document.addEventListener('keydown', function (e) {
+				if (e.code === 'Escape') {
+					onCloseMovie()
+					console.log('keydwon udeEffect ')
+				}
+			})
+		},
+		[onCloseMovie]
+	)
 
 	useEffect(
 		function () {
