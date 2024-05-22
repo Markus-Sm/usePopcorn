@@ -303,12 +303,20 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
 	useEffect(
 		function () {
-			document.addEventListener('keydown', function (e) {
-				if (e.code === 'Escape') {
-					onCloseMovie()
-					console.log('keydwon udeEffect ')
-				}
-			})
+			function callback(e) {
+				document.addEventListener('keydown', function (e) {
+					if (e.code === 'Escape') {
+						onCloseMovie()
+						console.log('keydwon useEffect ')
+					}
+				})
+			}
+
+			document.addEventListener('keydown', callback)
+
+			return function () {
+				document.removeEventListener('keydown', callback)
+			}
 		},
 		[onCloseMovie]
 	)
