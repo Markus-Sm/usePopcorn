@@ -93,8 +93,8 @@ export default function App() {
 
 					setMovies(data.Search)
 				} catch (err) {
-					console.error(err.message)
 					if (err.name !== 'AbortError') {
+						console.log(err.message)
 						setError(err.message)
 					}
 				} finally {
@@ -307,7 +307,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 				document.addEventListener('keydown', function (e) {
 					if (e.code === 'Escape') {
 						onCloseMovie()
-						console.log('keydwon useEffect ')
 					}
 				})
 			}
@@ -328,7 +327,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 				const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`)
 				const data = await res.json()
 				setMovie(data)
-				console.log(data)
 				setIsLoading(false)
 			}
 
