@@ -153,7 +153,7 @@ export default function App() {
 }
 
 function Loader() {
-	return <p className='loader'>Loading..n.</p>
+	return <p className='loader'>Loading..e.</p>
 }
 
 function ErrorMessage({ message }) {
