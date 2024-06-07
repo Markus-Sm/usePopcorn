@@ -153,7 +153,7 @@ export default function App() {
 }
 
 function Loader() {
-	return <p className='loader'>Loading..e.</p>
+	return <p className='loader'>Loading...</p>
 }
 
 function ErrorMessage({ message }) {
@@ -455,7 +455,7 @@ function WatchedMovie({ movie, onDeleteWatched }) {
 				</p>
 				<p>
 					<span>⏳</span>
-					<span>{movie.runtime} min</span>
+					<span>{movie.runtime} min tag</span>
 				</p>
 
 				<button className='btn-delete' onClick={() => onDeleteWatched(movie.imdbID)}>
