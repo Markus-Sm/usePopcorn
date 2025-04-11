@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const containerStyle = {
 	display: 'flex',
 	alignItems: 'center',
-	gap: '14px',
+	gap: '15px',
 }
 
 const starContainerStyle = {
